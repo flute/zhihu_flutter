@@ -189,7 +189,7 @@ class SearchPageState extends State<SearchPage> {
       // padding: _currentTabName == name ? EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5) : null,
       padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
       decoration: new BoxDecoration(
-        color: _currentTabName == name ? Color.fromRGBO(248, 248, 248, 1) : null,
+        color: _currentTabName == name ? Colors.grey[200] : null,
         borderRadius: new BorderRadius.all(Radius.circular(15))
       ),
     );
@@ -304,7 +304,7 @@ class SearchPageState extends State<SearchPage> {
         border: Border(
           bottom: new BorderSide(
             width: 1,
-            color: Colors.black12
+            color: Colors.grey[200]
           )
         )
       ),
@@ -315,13 +315,13 @@ class SearchPageState extends State<SearchPage> {
               children: <Widget>[
                 new Icon(
                   Icons.history,
-                  color: Colors.black26,
+                  color: Colors.grey[300],
                 ),
                 new Container(
                   margin: EdgeInsets.only(left: 5),
                   child: new Text(
                     title,
-                    style: new TextStyle(fontSize: 16, color: Colors.black87),
+                    style: new TextStyle(fontSize: 14, color: Colors.black87),
                   ),
                 )
               ],
@@ -351,7 +351,7 @@ class SearchPageState extends State<SearchPage> {
             padding: EdgeInsets.only(left: 10, right: 10),
             child: new Text(
               '搜索历史',
-              style: new TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.bold),
+              style: new TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
           new ListView.builder(

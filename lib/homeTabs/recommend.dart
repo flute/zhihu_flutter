@@ -57,13 +57,13 @@ class Recommend extends StatelessWidget {
             //color: Colors.red,
             child: new Text(
               title,
-              style: TextStyle(color: Colors.black87, fontSize: 20, fontWeight: FontWeight.w500),
+              style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
 
           // 图片
           coverUrl != '' ? new Container(
-            height: 200,
+            height: 180,
             decoration: new BoxDecoration(
               image: new DecorationImage(
                 image: NetworkImage(coverUrl),
@@ -80,7 +80,7 @@ class Recommend extends StatelessWidget {
               content,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Colors.black54, fontSize: 16),
+              style: TextStyle(color: Colors.black54, fontSize: 14),
             ),
           ),
 
@@ -89,7 +89,7 @@ class Recommend extends StatelessWidget {
             padding: EdgeInsets.only(left: 10, right: 10),
             child: new Text(
               '$like 赞同 · $comment 评论',
-              style: TextStyle(color: Colors.black38, fontSize: 14),
+              style: TextStyle(color: Colors.black38, fontSize: 12),
             ),
           )
         ].where(notNull).toList(),

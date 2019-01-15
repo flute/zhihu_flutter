@@ -16,12 +16,25 @@ class Video extends StatelessWidget {
                   height: 200,
                   child: new Stack(
                     children: <Widget>[
-                      Image.network(
-                        'https://pic3.zhimg.com/50/v2-b2fa7971a88befd424912e4779b264e3_hd.jpg',
+                      /* Image.network(
+                        '',
+                      ), */
+                      Container(
+                        decoration: new BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5),
+                          image: DecorationImage(
+                            image: NetworkImage('https://pic3.zhimg.com/50/v2-b2fa7971a88befd424912e4779b264e3_hd.jpg'),
+                            fit: BoxFit.cover
+                          )
+                        ),
                       ),
                       new Positioned(
                         child: new Container(
-                          color: Color.fromRGBO(0, 0, 0, 0.5),
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(0, 0, 0, 0.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
                           child: new Center(
                             child: new Icon(
                               Icons.play_circle_filled,
@@ -39,7 +52,7 @@ class Video extends StatelessWidget {
                   margin: EdgeInsets.only(top: 5, bottom: 5),
                   child: new Text(
                     '你忍不住想看第二遍的一个视频是什么？',
-                    style: new TextStyle(fontSize: 18, color: Colors.black87, fontWeight: FontWeight.bold),
+                    style: new TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.bold),
                   ),
                 ),
                 new Row(
@@ -50,8 +63,8 @@ class Video extends StatelessWidget {
                       child: new Row(
                         children: <Widget>[
                           new Container(
-                            width: 30,
-                            height: 30,
+                            width: 25,
+                            height: 25,
                             margin: EdgeInsets.only(right: 5),
                             decoration: new BoxDecoration(
                               shape: BoxShape.circle,
@@ -77,7 +90,7 @@ class Video extends StatelessWidget {
                             margin: EdgeInsets.only(left: 10),
                             child: new Row(
                               children: <Widget>[
-                                new Icon(Icons.favorite, color: Colors.black26, size: 20),
+                                new Icon(Icons.favorite, color: Colors.black26, size: 16),
                                 new Container(
                                   margin: EdgeInsets.only(left: 3),
                                   child: new Text('677'),
@@ -89,7 +102,7 @@ class Video extends StatelessWidget {
                             margin: EdgeInsets.only(left: 10),
                             child: new Row(
                               children: <Widget>[
-                                new Icon(Icons.comment, color: Colors.black26, size: 20),
+                                new Icon(Icons.comment, color: Colors.black26, size: 16),
                                 new Container(
                                   margin: EdgeInsets.only(left: 3),
                                   child: new Text('110'),
@@ -101,7 +114,7 @@ class Video extends StatelessWidget {
                             margin: EdgeInsets.only(left: 10),
                             child: new Row(
                               children: <Widget>[
-                                new Icon(Icons.share, color: Colors.black26, size: 20),
+                                new Icon(Icons.share, color: Colors.black26, size: 16),
                               ],
                             ),
                           )

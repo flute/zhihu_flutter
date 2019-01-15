@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zh/detail/page.dart';
 
 class Focus extends StatelessWidget {
   @override
@@ -46,6 +47,7 @@ class Focus extends StatelessWidget {
             new Column(
               children: <Widget>[
                 getListItem(
+                  context,
                   'https://pic1.zhimg.com/v2-16f69e0278cb3ad5073a88b50f1f0468_is.jpg',
                   '鹿哥',
                   '23',
@@ -57,6 +59,7 @@ class Focus extends StatelessWidget {
                   ''
                 ),
                 getListItem(
+                  context,
                   'https://pic3.zhimg.com/50/fdb8a75e59db51fd9d77bdf238f6ee9b_s.jpg',
                   '鹿哥',
                   '50',
@@ -68,6 +71,7 @@ class Focus extends StatelessWidget {
                   ''
                 ),
                 getListItem(
+                  context,
                   'https://pic3.zhimg.com/50/fdb8a75e59db51fd9d77bdf238f6ee9b_s.jpg',
                   '鹿哥',
                   '50',
@@ -79,6 +83,7 @@ class Focus extends StatelessWidget {
                   'https://pic2.zhimg.com/v2-2369a8ba607ae413c0f03b5ed9eded29_400x224.jpeg'
                 ),
                 getListItem(
+                  context,
                   'https://pic1.zhimg.com/v2-16f69e0278cb3ad5073a88b50f1f0468_is.jpg',
                   '鹿哥',
                   '23',
@@ -104,7 +109,7 @@ class Focus extends StatelessWidget {
    * 获取列表项目
    * type 1: 回答了； 2: 赞同了
    */
-  getListItem(String avatarUrl, String userName, String time, int type, String title, String content, int like, int comment, String imgUrl) {
+  getListItem(BuildContext context, String avatarUrl, String userName, String time, int type, String title, String content, int like, int comment, String imgUrl) {
     String itemInfo = type == 1 ? '$userName回答了问题 · $time分钟前' : '$userName赞同了问题 · $time分钟前';
     String bottomInfo = type == 1 ? '$like 赞同' : '$like 赞同 · $comment 评论';
     bool notNull(Object o) => o != null;
@@ -113,76 +118,83 @@ class Focus extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.all(15),
       margin: EdgeInsets.only(bottom: 10),
-      child: new Column(
-        children: <Widget>[
-          // 头部
-          Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Row(children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(right: 5),
-                decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: new DecorationImage(
-                    image: new NetworkImage(avatarUrl),
-                  )
-                ),
-                width: 30,
-                height: 30,
-              ),
-              
-              Text(
-                itemInfo,
-                style: TextStyle(color: Colors.black45, fontSize: 14),
-              ),
-            ]),
-          ),
-
-          // 标题
-          Container(
-            margin: EdgeInsets.only(bottom: 5),
-            alignment: Alignment.centerLeft,
-            child: new Text(
-              title,
-              style: new TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-          ),
-
-          // 内容
-          Container(
-            child: Row(
-              children: <Widget>[
-                new Expanded(
-                  child: Text(
-                    content,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: new TextStyle(fontSize: 14, color: Colors.black54),
+      child: new GestureDetector(
+        onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            return new DetailPage();
+          }));
+        },
+        child: new Column(
+          children: <Widget>[
+            // 头部
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              child: Row(children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(right: 5),
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                      image: new NetworkImage(avatarUrl),
+                    )
                   ),
+                  width: 30,
+                  height: 30,
                 ),
-                imgUrl != '' ? Container(
-                  width: 100,
-                  height: 60,
-                  margin: EdgeInsets.only(left: 10),
-                  child: new Image.network(imgUrl),
-                ) : null,
-              ].where(notNull).toList(),
+                
+                Text(
+                  itemInfo,
+                  style: TextStyle(color: Colors.black45, fontSize: 13),
+                ),
+              ]),
             ),
-          ),
 
-          // 底部
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            child: Row(children: <Widget>[
-              Text(
-                bottomInfo,
-                style: TextStyle(color: Colors.black38),
-              )
-            ],)
-          ),
+            // 标题
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              alignment: Alignment.centerLeft,
+              child: new Text(
+                title,
+                style: new TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+
+            // 内容
+            Container(
+              child: Row(
+                children: <Widget>[
+                  new Expanded(
+                    child: Text(
+                      content,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: new TextStyle(fontSize: 14, color: Colors.black54),
+                    ),
+                  ),
+                  imgUrl != '' ? Container(
+                    width: 100,
+                    height: 60,
+                    margin: EdgeInsets.only(left: 10),
+                    child: new Image.network(imgUrl),
+                  ) : null,
+                ].where(notNull).toList(),
+              ),
+            ),
+
+            // 底部
+            Container(
+              margin: EdgeInsets.only(top: 5),
+              child: Row(children: <Widget>[
+                Text(
+                  bottomInfo,
+                  style: TextStyle(color: Colors.black38, fontSize: 13),
+                )
+              ],)
+            ),
+            
+          ]
           
-        ]
-        
+        ),
       ),
     );
   }

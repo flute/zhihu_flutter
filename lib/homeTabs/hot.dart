@@ -107,10 +107,10 @@ class Hot extends StatelessWidget {
           children: <Widget>[
             // 热榜编号
             new Container(
-              
+              padding: EdgeInsets.only(top: 5),
               child: new Text(
                 '$index',
-                style: new TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.w500),
+                style: new TextStyle(color: Colors.red, fontSize: 16, fontWeight: FontWeight.w500),
               ),
             ),
             
@@ -128,7 +128,7 @@ class Hot extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 5),
                       child: new Text(
                         title,
-                        style: new TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 18),
+                        style: new TextStyle(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -150,7 +150,7 @@ class Hot extends StatelessWidget {
                       margin: EdgeInsets.only(top: 5),
                       child: new Text(
                         '247 万热度',
-                        style: new TextStyle(fontSize: 16, color: Colors.black38),
+                        style: new TextStyle(fontSize: 14, color: Colors.black38),
                       ),
                     )
                   ].where(notNull).toList(),

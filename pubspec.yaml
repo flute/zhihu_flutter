@@ -15,7 +15,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_player: ^0.8.0
+  flutter_swiper: ^1.1.4
+  dio: ^1.0.13
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -36,6 +37,20 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/icon/1.png
+    - assets/icon/2.png
+    - assets/icon/3.png
+    - assets/icon/4.png
+    - assets/icon/5.png
+    - assets/icon/6.png
+    - assets/icon/7.png
+    - assets/icon/8.png
+    - assets/icon/9.png
+    - assets/icon/10.png
+    - assets/icon/11.png
+    - assets/icon/12.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

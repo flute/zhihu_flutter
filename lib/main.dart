@@ -85,29 +85,65 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin 
           controller: controller,
           tabs: <Tab>[
             new Tab(
-              icon: new Icon(Icons.ac_unit),
-              text: '首页',
+              child: new Container(
+                padding: EdgeInsets.only(top: 5),
+                child: new Column(
+                  children: <Widget>[
+                    Icon(Icons.home, size: 25,),
+                    Text('首页', style: TextStyle(fontSize: 10),)
+                  ],
+                ),
+              ),
             ),
             new Tab(
-              icon: new Icon(Icons.access_alarm),
-              text: '想法',
+              child: new Container(
+                padding: EdgeInsets.only(top: 5),
+                child: new Column(
+                  children: <Widget>[
+                    Icon(Icons.access_alarm, size: 25,),
+                    Text('想法', style: TextStyle(fontSize: 10),)
+                  ],
+                ),
+              ),
             ),
             new Tab(
-              icon: new Icon(Icons.access_time),
-              text: '大学'
+              child: new Container(
+                padding: EdgeInsets.only(top: 5),
+                child: new Column(
+                  children: <Widget>[
+                    Icon(Icons.access_time, size: 25,),
+                    Text('大学', style: TextStyle(fontSize: 10),)
+                  ],
+                ),
+              ),
             ),
             new Tab(
-              icon: new Icon(Icons.account_balance_wallet),
-              text: '消息',
+              child: new Container(
+                padding: EdgeInsets.only(top: 5),
+                child: new Column(
+                  children: <Widget>[
+                    Icon(Icons.account_balance_wallet, size: 25,),
+                    Text('消息', style: TextStyle(fontSize: 10),)
+                  ],
+                ),
+              ),
             ),
             new Tab(
-              icon: new Icon(Icons.adb),
-              text: '我的',
+              child: new Container(
+                padding: EdgeInsets.only(top: 5),
+                child: new Column(
+                  children: <Widget>[
+                    Icon(Icons.adb, size: 25,),
+                    Text('我的', style: TextStyle(fontSize: 10),)
+                  ],
+                ),
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
 
 }
