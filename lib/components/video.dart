@@ -1,4 +1,4 @@
-import 'package:video_player/video_player.dart';
+/* import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 
 class VideoApp extends StatefulWidget {
@@ -54,4 +54,4 @@ class _VideoAppState extends State<VideoApp> {
       ),
     );
   }
-}
+} */
