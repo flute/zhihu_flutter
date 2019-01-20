@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ColleagueTab extends StatefulWidget {
   @override
@@ -109,7 +111,7 @@ class ColleagueTabState extends State<ColleagueTab> {
     // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('网络请求、下拉、上滑'),
+        title: new Text('网络请求-下拉上滑-左右滑动-长按'),
       ),
       body: new RefreshIndicator(
         onRefresh: _onRefresh,
@@ -120,7 +122,7 @@ class ColleagueTabState extends State<ColleagueTab> {
             //return new Text('$i');
             if(i == _jsonData.length) return _getMoreLoading();
             return new Container(
-              padding: EdgeInsets.only(left: 10, right: 10),
+              //padding: EdgeInsets.only(left: 10, right: 10),
               height: 80,
               decoration: BoxDecoration(
                 border: Border(
@@ -135,7 +137,8 @@ class ColleagueTabState extends State<ColleagueTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  _swipe(i+1, _jsonData[i]['title'], _jsonData[i]['posterScreenName'])
+                  /* Text(
                     '${i+1} . '+_jsonData[i]['title'],
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -144,26 +147,95 @@ class ColleagueTabState extends State<ColleagueTab> {
                   Text(
                     _jsonData[i]['posterScreenName'],
                     style: TextStyle(color: Colors.blue[300]),
-                  )
+                  ) */
                 ],
               ),
               
             );
           },
-        ),
-        /* child: new SingleChildScrollView(
-          controller: _controller,
-          child: new Container(
-            padding: EdgeInsets.all(10),
-            child: new Column(
-              children: <Widget>[
-                Text('下拉刷新'),
-                new Text(_jsonData)
-              ],
+        )
+      )
+    );
+  }
+
+  void _showSnackBar(String title) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(content: Text(title))
+    );
+  }
+
+void _showToast(String title) {
+  Fluttertoast.showToast(
+    msg: title,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIos: 1,
+    backgroundColor: Color.fromRGBO(0, 0, 0, 0.85),
+    textColor: Colors.white
+  );
+}
+
+  // 左右滑动
+  Widget _swipe(int i, String title, String desc) {
+    return new Slidable(
+      delegate: new SlidableDrawerDelegate(),
+      actionExtentRatio: 0.25,
+      child: new Container(
+        color: Colors.white,
+        child: new GestureDetector(
+          onTap: (){_showToast('点击: $i');},
+          onDoubleTap: (){_showToast('连点: $i');},
+          onLongPress: (){_showToast('长按: $i');},
+          child: new ListTile(
+            leading: new CircleAvatar(
+              backgroundColor: Colors.grey[200],
+              child: new Text(
+                '$i',
+                style: TextStyle(color: Colors.orange),
+              ),
+              foregroundColor: Colors.white,
+            ),
+            title: new Text(
+              '$title',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.black87, fontSize: 16),
+            ),
+            subtitle: new Text(
+              '$desc',
+              style: TextStyle(color: Colors.blue[300]),
             ),
           ),
-        ), */
-      )
+        )
+      ),
+      actions: <Widget>[
+        new IconSlideAction(
+          caption: 'Archive',
+          color: Colors.blue,
+          icon: Icons.archive,
+          onTap: () => _showSnackBar('Archive'),
+        ),
+        new IconSlideAction(
+          caption: 'Share',
+          color: Colors.indigo,
+          icon: Icons.share,
+          onTap: () => _showSnackBar('Share'),
+        ),
+      ],
+      secondaryActions: <Widget>[
+        new IconSlideAction(
+          caption: 'More',
+          color: Colors.black45,
+          icon: Icons.more_horiz,
+          onTap: () => _showSnackBar('More'),
+        ),
+        new IconSlideAction(
+          caption: 'Delete',
+          color: Colors.red,
+          icon: Icons.delete,
+          onTap: () => _showSnackBar('Delete'),
+        ),
+      ],
     );
   }
 }

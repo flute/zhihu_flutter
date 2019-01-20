@@ -8,7 +8,7 @@ class IdeaTab extends StatelessWidget {
     return new Scaffold(
       // backgroundColor: Colors.red,
       appBar: new AppBar(
-        title: new Text('想法'),
+        title: new Text('轮播-表单-picker-Actionsheet-SnackBar'),
       ),
       body: IdeaPage(),
       floatingActionButton: new FloatingActionButton(
@@ -108,6 +108,7 @@ class IdeaPageState extends State<IdeaPage> {
     }
   }
 
+  // devider
   Widget devider(String title) {
     return new Container(
       padding: EdgeInsets.only(left:5, top: 10, bottom: 10),
@@ -126,6 +127,7 @@ class IdeaPageState extends State<IdeaPage> {
     );
   }
 
+  // datepicker
   void _showDatePicker() {
     _selectDate(context);
   }
@@ -146,6 +148,7 @@ class IdeaPageState extends State<IdeaPage> {
     }
   }
 
+  // timepicker
   void _showTimePicker(){
     _selectTime(context);
   }
@@ -163,6 +166,7 @@ class IdeaPageState extends State<IdeaPage> {
     }
   }
 
+  // snackbar
   void _showToast(BuildContext context) {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
@@ -176,12 +180,51 @@ class IdeaPageState extends State<IdeaPage> {
     );
   }
 
+  void _showActionSheet() {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => actionSheet(),
+    ).then((value) {
+      Scaffold.of(context).showSnackBar(new SnackBar(
+        content: new Text('You clicked $value'),
+      ));
+    });
+  }
+
+  Widget actionSheet(){
+    return new CupertinoActionSheet(
+      title: new Text('title'),
+      message: const Text('your options are'),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: const Text('yes'),
+          onPressed: (){
+            Navigator.pop(context, 'yes');
+          },
+        ),
+        CupertinoActionSheetAction(
+          child: const Text('no'),
+          onPressed: (){
+            Navigator.pop(context, 'no');
+          },
+        )
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: new Text('cancel'),
+        onPressed: () {
+          Navigator.pop(context, 'Cancel');
+        },
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return new SingleChildScrollView(
       child: new Container(
         child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             new Container(
@@ -191,15 +234,13 @@ class IdeaPageState extends State<IdeaPage> {
             new Flexible(
               flex: 1,
               child: new Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 10, right: 10, bottom: 100),
                 child: new Column(
-                  
                   children: <Widget>[
                     new Form(
                       key: _formKey,
                       child: new Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
 
                           devider('输入框：'),
@@ -216,6 +257,17 @@ class IdeaPageState extends State<IdeaPage> {
                             validator: (v)=>(v == null || v.isEmpty)?"请选择配置": null,
                             decoration: new InputDecoration(
                               labelText: '配置',
+                            ),
+                          ),
+                          new Container(
+                            //margin: EdgeInsets.only(top: 50),
+                            child: new MaterialButton(
+                              child: new Text(
+                                'Submit', 
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              onPressed: _onSubmit, 
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                           new TextFormField(
@@ -330,16 +382,20 @@ class IdeaPageState extends State<IdeaPage> {
                             ],
                           ),
                           devider('switch:'),
-                          new Container(
-                            child: new Switch(
-                              activeColor: Colors.green,
-                              value: flutter,
-                              onChanged: (val) {
-                                setState(() {
-                                  flutter = val;
-                                });
-                              },
-                            ),
+                          new Row(
+                            children: <Widget>[
+                              new Container(
+                                child: new Switch(
+                                  activeColor: Colors.green,
+                                  value: flutter,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      flutter = val;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                           devider('slider:'),
                           new Slider(
@@ -371,17 +427,7 @@ class IdeaPageState extends State<IdeaPage> {
                             onTap: _showTimePicker,
                             child: new Text(_time.format(context)),
                           ),
-                          new Container(
-                            margin: EdgeInsets.only(top: 50),
-                            child: new MaterialButton(
-                              child: new Text(
-                                'Submit', 
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                              onPressed: _onSubmit, 
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
+                          
 
                           devider('showSnackBar/Toast:'),
                           new MaterialButton(
@@ -391,10 +437,18 @@ class IdeaPageState extends State<IdeaPage> {
                             child: new Text('showSnackBar', style: TextStyle(color: Colors.white),),
                             color: Colors.greenAccent,
                           ),
-
-                          new CupertinoActionSheet(
-                            title: new Text('title'),
-                          )
+                          
+                          devider('show ActionSheet'),
+                          new MaterialButton(
+                            onPressed: () {
+                              _showActionSheet();
+                            },
+                            child: new Text('show ActionSheet', style: TextStyle(color: Colors.white),),
+                            color: Colors.greenAccent,
+                          ),
+                          
+                          
+                          
                         ],
                       ),
                     )

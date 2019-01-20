@@ -17,7 +17,12 @@ dependencies:
     sdk: flutter
   flutter_swiper: ^1.1.4
   dio: ^1.0.13
-  loadmore: ^1.0.2
+  flutter_slidable: "^0.4.9"
+  fluttertoast: ^2.2.6
+  camera: ^0.2.9
+  image_picker: ^0.4.12
+  video_player: ^0.8.0
+  audioplayer: ^0.5.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
