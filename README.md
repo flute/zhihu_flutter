@@ -30,15 +30,15 @@
 持续学习中。欢迎加入Flutter开拓交流，群聊号码：236379502
 
 
-<img src="./screenshoot/1.png" width = "49%" />  <img src="./screenshoot/2.png" width = "49%" />
+<img src="./screenshot/1.png" width = "49%" />  <img src="./screenshot/2.png" width = "49%" />
 
-<img src="./screenshoot/3.png" width = "49%" />  <img src="./screenshoot/4.png" width = "49%" />
+<img src="./screenshot/3.png" width = "49%" />  <img src="./screenshot/4.png" width = "49%" />
 
-<img src="./screenshoot/5.png" width = "49%" />  <img src="./screenshoot/6.png" width = "49%" />
+<img src="./screenshot/5.png" width = "49%" />  <img src="./screenshot/6.png" width = "49%" />
 
-<img src="./screenshoot/7.png" width = "49%" />  <img src="./screenshoot/8.png" width = "49%" />
+<img src="./screenshot/7.png" width = "49%" />  <img src="./screenshot/8.png" width = "49%" />
 
-<img src="./screenshoot/9.png" width = "49%" />  <img src="./screenshoot/10.png" width = "49%" />
+<img src="./screenshot/9.png" width = "49%" />  <img src="./screenshot/10.png" width = "49%" />
 
 
 
